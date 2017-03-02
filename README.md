@@ -32,27 +32,32 @@
     In your browser go to http://localhost:8080 and see your drupal there
     
 4. Docker compose
-    Most of the time you would also want database and perhaps other containers:
+    Most of the time you would also want database and perhaps other containers (eg.mysql, phpmyadmin):
     
     ```
-web:
-  image: droptica/apache-php
-  volumes:
-    - ./dir-with-drupal:/var/www/html
-  links:
-    - mysql:mysql
-  environment:
-#    DOCUMENT_ROOT: /var/www/html
+  web:
+    image: droptica/apache-php
+    volumes:
+      - ./dir-with-drupal:/var/www/html
+    links:
+      - mysql:mysql
+    environment:
+#      DOCUMENT_ROOT: /var/www/html
 
-mysql:
-  image: mysql:5.6
-  volumes:
-#    - ./dir-for-persistent-database-files:/var/lib/mysql
-  environment:
-    MYSQL_ROOT_PASSWORD: root-password
-    MYSQL_DATABASE: db
-    MYSQL_USER: user
-    MYSQL_PASSWORD: password
+  mysql:
+    image: mysql:5.6
+    volumes:
+#      - ./dir-for-persistent-database-files:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root-password
+      MYSQL_DATABASE: db
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+      
+  phpmyadmin:
+    image: nazarpc/phpmyadmin
+    links:
+      - mysql:mysql
     ```
    run
    ```
