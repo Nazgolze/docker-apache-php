@@ -66,5 +66,9 @@
 
 ## Configuration
 
-
+### Document root
 - `ENV DOCUMENT_ROOT` // allows to specify path for document root different then /var/www/html
+
+### Add htpasswd auth
+-  `ENV WEB_USER`
+-  `ENV WEB_PASS`
