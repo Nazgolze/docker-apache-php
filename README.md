@@ -63,3 +63,8 @@
    ```
    docker-compose up
    ```
+
+## Configuration
+
+
+- `ENV DOCUMENT_ROOT` // allows to specify path for document root different then /var/www/html
