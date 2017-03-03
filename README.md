@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/droptica/docker-apache-php.svg?branch=master)](https://travis-ci.org/droptica/docker-apache-php)
+
 # Apache and php on docker tailored for Drupal/Wordpress
 
 ## Tags
