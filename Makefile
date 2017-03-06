@@ -1,4 +1,4 @@
-build: build-xdebug build-xhprof build-base
+build: build-base build-xdebug build-xhprof
 
 test: build test-base test-xdebug test-xhprof
 
