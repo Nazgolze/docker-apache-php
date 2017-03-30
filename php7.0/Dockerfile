@@ -4,7 +4,7 @@ FROM php:7.0-apache
 MAINTAINER Droptica <info@droptica.com>
 
 # Packages
-RUN a2enmod rewrite && apt-get update && apt-get install --no-install-recommends -y \
+RUN a2enmod rewrite expires && apt-get update && apt-get install --no-install-recommends -y \
   libfreetype6-dev \
   libjpeg62-turbo-dev \
   libmcrypt-dev \
