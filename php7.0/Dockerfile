@@ -12,6 +12,7 @@ RUN a2enmod rewrite expires && apt-get update && apt-get install --no-install-re
   mcrypt \
   libmcrypt-dev \
   libjpeg-dev \
+  libmemcached-dev \
   pkg-config libmagickwand-dev imagemagick \
   zlib1g-dev libicu-dev
 
