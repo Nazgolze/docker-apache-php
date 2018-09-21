@@ -1,4 +1,4 @@
-FROM php:7.0-apache
+FROM php:7.2-apache
 MAINTAINER Droptica <info@droptica.com>
 
 # Packages
@@ -14,9 +14,9 @@ RUN apt-get install --no-install-recommends -y \
   mcrypt \
   libmcrypt-dev \
   libjpeg-dev \
+  libmemcached-dev \
   patch \
   pkg-config libmagickwand-dev imagemagick \
-  libmemcached-dev \
   zlib1g-dev libicu-dev
 
 
