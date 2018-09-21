@@ -1,4 +1,4 @@
-FROM php:7.0-apache
+FROM php:5.6-apache
 MAINTAINER Droptica <info@droptica.com>
 
 # Packages
@@ -14,19 +14,20 @@ RUN apt-get install --no-install-recommends -y \
   mcrypt \
   libmcrypt-dev \
   libjpeg-dev \
+  libmemcached-dev \
   patch \
   pkg-config libmagickwand-dev imagemagick \
-  libmemcached-dev \
   zlib1g-dev libicu-dev
 
 
-RUN pecl install imagick memcached redis
+RUN pecl install imagick memcached-2.2.0 redis
 RUN docker-php-ext-enable imagick memcached redis
 
 RUN docker-php-ext-configure imap --with-kerberos --with-imap-ssl
 RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
+RUN docker-php-ext-configure opcache --enable-opcache
 
-RUN docker-php-ext-install -j$(nproc) bcmath exif fileinfo gd intl imap mbstring mcrypt mysqli pdo pdo_mysql soap xmlrpc zip
+RUN docker-php-ext-install -j$(nproc) bcmath exif fileinfo gd intl imap mbstring mcrypt mysqli opcache pdo pdo_mysql soap xmlrpc zip
 
 RUN docker-php-ext-enable opcache
 
