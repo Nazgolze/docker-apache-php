@@ -5,6 +5,7 @@ MAINTAINER Droptica <info@droptica.com>
 RUN apt-get update
 RUN apt-get dist-upgrade -y
 RUN apt-get install --no-install-recommends -y \
+  libbz2-dev \
   libc-client-dev \
   libkrb5-dev \
   libfreetype6-dev \
@@ -26,7 +27,7 @@ RUN docker-php-ext-enable imagick memcached redis
 RUN docker-php-ext-configure imap --with-kerberos --with-imap-ssl
 RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
 
-RUN docker-php-ext-install -j$(nproc) bcmath exif fileinfo gd intl imap mbstring mcrypt mysqli pdo pdo_mysql soap xmlrpc zip
+RUN docker-php-ext-install -j$(nproc) bcmath bz2 exif fileinfo gd intl imap mbstring mcrypt mysqli pdo pdo_mysql soap xmlrpc zip
 
 RUN docker-php-ext-enable opcache
 
