@@ -43,13 +43,15 @@ RUN useradd -u 7001 -s /bin/false -d /var/www -c "Droptica dedicated www user" w
 # Add support for WWW user
 RUN sed -i -e 's/www-data/www/g' /etc/apache2/envvars
 
-# Cleaning
-RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
+# Add custom php configs
+ADD ./configs/php.ini ${PHP_INI_DIR}/conf.d/droptica-customs.ini
 ADD configs/entrypoint.sh /bin/entrypoint.sh
 ADD configs/htpasswd.conf /etc/apache2/conf-available/htpasswd.conf
 ADD configs/000-default.conf /etc/apache2/sites-available/000-default.conf
 ADD configs/default-ssl.conf /etc/apache2/sites-available/default-ssl.conf
+
+# Cleaning
+RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN chmod 777 /bin/entrypoint.sh
 ENV DOCUMENT_ROOT /var/www/html
