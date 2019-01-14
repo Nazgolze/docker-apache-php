@@ -16,6 +16,7 @@ RUN apt-get install --no-install-recommends -y \
   libmcrypt-dev \
   libjpeg-dev \
   libmemcached-dev \
+  libzip-dev \
   patch \
   pkg-config libmagickwand-dev imagemagick \
   zlib1g-dev libicu-dev
