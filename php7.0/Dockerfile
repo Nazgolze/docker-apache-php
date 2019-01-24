@@ -39,7 +39,7 @@ RUN a2enmod rewrite expires
 RUN echo "date.timezone=${PHP_TIMEZONE:-UTC}" > $PHP_INI_DIR/conf.d/date_timezone.ini
 
 # Create dedicated WWW usera across all images
-RUN useradd -u 7001 -s /bin/false -d /var/www -c "Droptica dedicated www user" www
+RUN useradd -u 7000 -s /bin/false -d /var/www -c "Droptica dedicated www user" www
 
 # Add support for WWW user
 RUN sed -i -e 's/www-data/www/g' /etc/apache2/envvars
