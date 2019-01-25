@@ -1,6 +1,9 @@
 FROM php:5.6-apache
 MAINTAINER Droptica <info@droptica.com>
 
+ENV APACHE_RUN_USER  dropadmin
+ENV APACHE_RUN_GROUP dropadmin
+
 # Packages
 RUN apt-get update
 RUN apt-get dist-upgrade -y
@@ -40,7 +43,7 @@ RUN a2enmod rewrite expires
 RUN echo "date.timezone=${PHP_TIMEZONE:-UTC}" > $PHP_INI_DIR/conf.d/date_timezone.ini
 
 # Create dedicated WWW usera across all images
-RUN useradd -u 7000 -s /bin/false -d /var/www -c "Droptica dedicated www user" www
+RUN useradd -u 7000 -s /bin/false -d /var/www -c "Droptica dedicated www user" dropadmin
 
 # Add support for WWW user
 RUN sed -i -e 's/www-data/www/g' /etc/apache2/envvars
