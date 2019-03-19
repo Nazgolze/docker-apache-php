@@ -36,7 +36,7 @@
 4. Docker compose
     Most of the time you would also want database and perhaps other containers (eg.mysql, phpmyadmin):
     
-    ```
+```
   web:
     image: droptica/apache-php
     volumes:
@@ -60,7 +60,7 @@
     image: nazarpc/phpmyadmin
     links:
       - mysql:mysql
-    ```
+```
    run
    ```
    docker-compose up
